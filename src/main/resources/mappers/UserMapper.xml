@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vaizn.data.busi.dal.mapper.UserMapper">
+  <resultMap id="userMap" type="com.vaizn.data.busi.dal.entity.User">
+    <id column="USER_ID" property="userId" />
+    <result column="NICK_NAME" property="nickName" />
+    <result column="USER_ACCOUNT" property="userAccount" />
+    <result column="USER_PASSWORD" property="userPassword" />
+    <result column="PHONE_NUMBER" property="phoneNumber" />
+    <result column="EMAIL" property="email" />
+    <result column="NATIVE_PROVIN" property="nativeProvin" />
+    <result column="NATIVE_CITY" property="nativeCity" />
+    <result column="VOCATION" property="vocation" />
+    <result column="SEX" property="sex" />
+    <result column="BIRTHDAY" property="birthday" />
+    <result column="SIGNATURE" property="signature" />
+    <result column="VIP_LEVEL" property="vipLevel" />
+    <result column="EMOTION_STATUS" property="emotionStatus" />
+    <result column="CREATE_DATE" property="createDate" />
+    <result column="NATIVE_ADDRESS" property="nativeAddress" />
+    <result column="ZODIAC" property="zodiac" />
+    <result column="ACCREDITATION" property="accreditation" />
+    <result column="USER_VALID" property="userValid" />
+    <result column="USER_STATUS" property="userStatus" />
+  </resultMap>
+  
+  <sql id="user_field">
+  	t.USER_ID,t.NICK_NAME,t.USER_ACCOUNT,t.USER_PASSWORD,t.PHONE_NUMBER,t.EMAIL,t.NATIVE_PROVIN,t.NATIVE_CITY,
+  	t.VOCATION,t.SEX,t.BIRTHDAY,t.SIGNATURE,t.VIP_LEVEL,t.EMOTION_STATUS,t.CREATE_DATE,t.NATIVE_ADDRESS,t.ZODIAC,
+  	t.ACCREDITATION,t.USER_VALID,t.USER_STATUS 
+  </sql>
+  
+  <select id="getNearbyUser" resultMap="userMap" parameterType="com.vaizn.data.dto.UserRequestDto">
+	  select 
+	  <include refid="user_field" />
+	  from t_user t
+  </select>
+  
+</mapper>
